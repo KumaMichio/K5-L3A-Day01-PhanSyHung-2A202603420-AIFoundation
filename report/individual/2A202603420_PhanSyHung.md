@@ -16,11 +16,22 @@
 
 ## 2. Kết quả chính
 
-*Chép bảng so sánh cuối Phần 5 (F1 test, F1 SUB 40, p95 ms/tin, USD/1k tin) của chính bạn.*
+| Cách tiếp cận | F1 test | F1 SUB 40 | p95 ms/tin | USD/1k tin |
+|---|---|---|---|---|
+| 1. BoW + LogReg (tự code) | 0.886 | 0.889 | 0.099 | 0.000 |
+| 2. BoW + MLP (deep learning) | 0.952 | 0.974 | 0.482 | 0.000 |
+| 3a. Encoder (MiniLM) + kNN | 0.913 | 1.000 | 82.236 | 0.000 |
+| 3b. Encoder (MiniLM) + LogReg | 0.959 | 0.976 | 44.159 | 0.000 |
+| 3c. Encoder (MiniLM) + MLP head | 0.974 | 1.000 | 43.045 | 0.000 |
+| 4a. LLM nhỏ zero-shot (mistral-nemo) | — | 0.930 | 1641.158 | 0.002 |
+| 4b. LLM lớn zero-shot (mistral-small-24b) | — | 0.930 | 1379.144 | 0.004 |
+| 4c. LLM nhỏ few-shot (mistral-nemo) | — | 0.952 | 1177.834 | 0.006 |
+
 
 ## 3. Dự đoán và thực tế
 
-*Chọn 3 dự đoán `predict(...)` lệch nhiều nhất so với kết quả. Mỗi cái: bạn đoán gì, ra gì, vì sao lệch.*
+tradeoff: Em đoán chỉ BoW + LogReg nằm trên đường Pareto. Thực tế có thêm BoW + MLP và 3c. 
+Em không nghĩ đến việc một lớp ẩn giúp BoW giảm lỗi từ ~11 % xuống ~2.6 % mà gần như không tốn thêm thời gian (0.3 ms).
 
 ## 4. Phân tích 50 case khó
 
