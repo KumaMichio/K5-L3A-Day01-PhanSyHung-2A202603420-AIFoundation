@@ -45,6 +45,9 @@ Em không nghĩ đến việc một lớp ẩn giúp BoW giảm lỗi từ ~11 %
 
 *Với yêu cầu p95 < 50 ms/tin cho 10 triệu SMS/ngày: chọn phương án nào, dẫn số liệu nào, chấp nhận đánh đổi gì.*
 
+Dùng 3c (Encoder + MLP head) làm bộ lọc chính, vì nó ít lỗi nhất mà vẫn đạt SLA 50 ms. Nếu có yêu cầu cao về vấn đề độ trễ thì dùng BoW + MLP (~0.3 ms). 
+Chỉ những tin mà model không chắc chắn mới gửi sang LLM, nên chi phí và độ trễ chỉ phát sinh với một phần nhỏ số tin.
+
 ## 7. AI log và điều đã học
 
 *Mỗi lần dùng AI: hỏi gì, nhận gì, bạn sửa gì. Sau đó 2–3 câu: điều bạn hiểu ra hôm nay mà trước đó chưa hiểu.*
